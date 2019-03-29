@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shopping Karts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shopping_karts.each do |shopping_kart| %>
+      <tr>
+        <td><%= shopping_kart.name %></td>
+        <td><%= link_to 'Show', shopping_kart %></td>
+        <td><%= link_to 'Edit', edit_shopping_kart_path(shopping_kart) %></td>
+        <td><%= link_to 'Destroy', shopping_kart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shopping Kart', new_shopping_kart_path %>
