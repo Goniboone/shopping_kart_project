@@ -1,0 +1,341 @@
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:4
+  [1m[35m (70.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:4
+  [1m[35m (69.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:4
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Migrating to CreateShoppingKarts (20190329031310)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "shopping_karts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20190329031310_create_shopping_karts.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190329031310"]]
+  ↳ bin/rails:4
+  [1m[35m (70.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+Migrating to CreateFoods (20190329031513)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "foods" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "item" varchar, "shopping_kart_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_91b2033520"
+FOREIGN KEY ("shopping_kart_id")
+  REFERENCES "shopping_karts" ("id")
+)[0m
+  ↳ db/migrate/20190329031513_create_foods.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_foods_on_shopping_kart_id" ON "foods" ("shopping_kart_id")[0m
+  ↳ db/migrate/20190329031513_create_foods.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20190329031513"]]
+  ↳ bin/rails:4
+  [1m[35m (75.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:4
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:4
+  [1m[36mActiveRecord::InternalMetadata Create (8.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-03-29 03:23:05.579117"], ["updated_at", "2019-03-29 03:23:05.579117"]]
+  ↳ bin/rails:4
+  [1m[35m (60.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:4
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:4
+Started GET "/shopping_karts" for ::1 at 2019-03-28 22:24:15 -0500
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ShoppingKartsController#index as HTML
+  Rendering shopping_karts/index.html.erb within layouts/application
+  [1m[36mShoppingKart Load (0.7ms)[0m  [1m[34mSELECT "shopping_karts".* FROM "shopping_karts"[0m
+  ↳ app/views/shopping_karts/index.html.erb:14
+  Rendered shopping_karts/index.html.erb within layouts/application (328.1ms)
+Completed 200 OK in 44231ms (Views: 43330.3ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/shopping_karts/new" for ::1 at 2019-03-28 22:25:27 -0500
+Processing by ShoppingKartsController#new as HTML
+  Rendering shopping_karts/new.html.erb within layouts/application
+  Rendered shopping_karts/_form.html.erb (32.4ms)
+  Rendered shopping_karts/new.html.erb within layouts/application (751.1ms)
+Completed 500 Internal Server Error in 3848ms (ActiveRecord: 3.7ms)
+
+
+  
+SyntaxError (E:/School-Spring 2019/Rails & Ruby class/shopping_kart_project/app/views/shopping_karts/_form.html.erb:36: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+                ^):
+  
+app/views/shopping_karts/_form.html.erb:36: syntax error, unexpected keyword_ensure, expecting end-of-input
+app/views/shopping_karts/new.html.erb:3:in `_app_views_shopping_karts_new_html_erb__228667206_99628560'
+Started GET "/shopping_karts/new" for ::1 at 2019-03-28 22:27:43 -0500
+Processing by ShoppingKartsController#new as HTML
+  Rendering shopping_karts/new.html.erb within layouts/application
+  Rendered shopping_karts/_form.html.erb (1878.6ms)
+  Rendered shopping_karts/new.html.erb within layouts/application (2847.3ms)
+Completed 500 Internal Server Error in 6409ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `f' for #<#<Class:0x000000000be06388>:0x000000000c7b7738>):
+    18: 
+    19:   <h3>Tasks</h3>
+    20:   <div id='tasks'>
+    21:     <%= f.fields_for :foods do |fod| %>
+    22:       <%= render 'food_fields', :form => fod %>
+    23:     <% end %>
+    24:     <div class='links'>
+  
+app/views/shopping_karts/_form.html.erb:21:in `block in _app_views_shopping_karts__form_html_erb__854157278_104675720'
+app/views/shopping_karts/_form.html.erb:1:in `_app_views_shopping_karts__form_html_erb__854157278_104675720'
+app/views/shopping_karts/new.html.erb:3:in `_app_views_shopping_karts_new_html_erb__228667206_104784040'
+Started GET "/shopping_karts/new" for ::1 at 2019-03-28 22:28:42 -0500
+Processing by ShoppingKartsController#new as HTML
+  Rendering shopping_karts/new.html.erb within layouts/application
+  Rendered shopping_karts/_form.html.erb (2148.2ms)
+  Rendered shopping_karts/new.html.erb within layouts/application (2913.6ms)
+Completed 500 Internal Server Error in 9409ms (ActiveRecord: 3.1ms)
+
+
+  
+ActionView::Template::Error (Missing partial shopping_karts/_food_fields, application/_food_fields with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder, :haml]}. Searched in:
+  * "E:/School-Spring 2019/Rails & Ruby class/shopping_kart_project/app/views"
+):
+    22:       <%= render 'food_fields', :form => fod %>
+    23:     <% end %>
+    24:     <div class='links'>
+    25:       <%= link_to_add_association 'add task', form, :foods %>
+    26:     </div>
+    27:   </div>
+    28: 
+  
+app/views/shopping_karts/_form.html.erb:25:in `block in _app_views_shopping_karts__form_html_erb__854157278_74688080'
+app/views/shopping_karts/_form.html.erb:1:in `_app_views_shopping_karts__form_html_erb__854157278_74688080'
+app/views/shopping_karts/new.html.erb:3:in `_app_views_shopping_karts_new_html_erb__228667206_75582660'
+Started GET "/shopping_karts/new" for ::1 at 2019-03-28 22:30:52 -0500
+Processing by ShoppingKartsController#new as HTML
+  Rendering shopping_karts/new.html.erb within layouts/application
+  Rendered shopping_karts/_food_fields.html.erb (2580.5ms)
+  Rendered shopping_karts/_form.html.erb (3448.0ms)
+  Rendered shopping_karts/new.html.erb within layouts/application (4359.7ms)
+Completed 500 Internal Server Error in 8492ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `form' for #<#<Class:0x000000000be06388>:0x000000000c897478>
+Did you mean?  fork):
+    1: <div class='nested-fields'>
+    2:   <div class="field">
+    3:     <%= form.label :item %>
+    4:     <%= form.text_field :item %>
+    5:   </div>
+    6:   <%= link_to_remove_association "remove food", form %>
+  
+app/views/shopping_karts/_food_fields.html.erb:3:in `_app_views_shopping_karts__food_fields_html_erb__672169792_105536820'
+app/views/shopping_karts/_form.html.erb:25:in `block in _app_views_shopping_karts__form_html_erb__854157278_105265680'
+app/views/shopping_karts/_form.html.erb:1:in `_app_views_shopping_karts__form_html_erb__854157278_105265680'
+app/views/shopping_karts/new.html.erb:3:in `_app_views_shopping_karts_new_html_erb__228667206_105168680'
+Started GET "/shopping_karts/new" for ::1 at 2019-03-28 22:34:59 -0500
+Processing by ShoppingKartsController#new as HTML
+  Rendering shopping_karts/new.html.erb within layouts/application
+  Rendered shopping_karts/_food_fields.html.erb (4015.6ms)
+  Rendered shopping_karts/_form.html.erb (5036.8ms)
+  Rendered shopping_karts/new.html.erb within layouts/application (5909.7ms)
+Completed 500 Internal Server Error in 10259ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `fod' for #<#<Class:0x000000000be06388>:0x000000000c299f58>
+Did you mean?  fork):
+    1: <div class='nested-fields'>
+    2:   <div class="field">
+    3:     <%= fod.label :item %>
+    4:     <%= fod.text_field :item %>
+    5:   </div>
+    6:   <%= link_to_remove_association "remove food", form %>
+  
+app/views/shopping_karts/_food_fields.html.erb:3:in `_app_views_shopping_karts__food_fields_html_erb__672169792_101897700'
+app/views/shopping_karts/_form.html.erb:25:in `block in _app_views_shopping_karts__form_html_erb__854157278_101995540'
+app/views/shopping_karts/_form.html.erb:1:in `_app_views_shopping_karts__form_html_erb__854157278_101995540'
+app/views/shopping_karts/new.html.erb:3:in `_app_views_shopping_karts_new_html_erb__228667206_102028440'
+Started GET "/shopping_karts/new" for ::1 at 2019-03-28 22:36:51 -0500
+Processing by ShoppingKartsController#new as HTML
+  Rendering shopping_karts/new.html.erb within layouts/application
+  Rendered shopping_karts/_food_fields.html.erb (1479.6ms)
+  Rendered shopping_karts/_form.html.erb (2341.3ms)
+  Rendered shopping_karts/new.html.erb within layouts/application (4468.6ms)
+Completed 500 Internal Server Error in 10568ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `form' for #<#<Class:0x000000000be06388>:0x000000000c4fe1e0>
+Did you mean?  fork):
+    1: <div class='nested-fields'>
+    2:   <div class="field">
+    3:     <%= form.label :item %>
+    4:     <%= form.text_field :item %>
+    5:   </div>
+    6:   <%= link_to_remove_association "remove food", form %>
+  
+app/views/shopping_karts/_food_fields.html.erb:3:in `_app_views_shopping_karts__food_fields_html_erb__672169792_103019940'
+app/views/shopping_karts/_form.html.erb:25:in `block in _app_views_shopping_karts__form_html_erb__854157278_103216200'
+app/views/shopping_karts/_form.html.erb:1:in `_app_views_shopping_karts__form_html_erb__854157278_103216200'
+app/views/shopping_karts/new.html.erb:3:in `_app_views_shopping_karts_new_html_erb__228667206_103282140'
+Started GET "/shopping_karts/new" for ::1 at 2019-03-28 22:46:10 -0500
+Processing by ShoppingKartsController#new as HTML
+  Rendering shopping_karts/new.html.erb within layouts/application
+  Rendered shopping_karts/_food_fields.html.erb (1431.2ms)
+  Rendered shopping_karts/_form.html.erb (2158.9ms)
+  Rendered shopping_karts/new.html.erb within layouts/application (2899.6ms)
+Completed 500 Internal Server Error in 6639ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `form' for #<#<Class:0x000000000be06388>:0x000000000c7e7af0>
+Did you mean?  fork):
+    1: <div class='nested-fields'>
+    2:   <div class="field">
+    3:     <%= form.label :item %>
+    4:     <%= form.text_field :item %>
+    5:   </div>
+    6:   <%= link_to_remove_association "remove food", form %>
+  
+app/views/shopping_karts/_food_fields.html.erb:3:in `_app_views_shopping_karts__food_fields_html_erb__672169792_104627700'
+app/views/shopping_karts/_form.html.erb:31:in `block in _app_views_shopping_karts__form_html_erb__854157278_104706220'
+app/views/shopping_karts/_form.html.erb:1:in `_app_views_shopping_karts__form_html_erb__854157278_104706220'
+app/views/shopping_karts/new.html.erb:3:in `_app_views_shopping_karts_new_html_erb__228667206_104817320'
+Started GET "/shopping_karts/new" for ::1 at 2019-03-28 22:46:52 -0500
+Processing by ShoppingKartsController#new as HTML
+  Rendering shopping_karts/new.html.erb within layouts/application
+  Rendered shopping_karts/_food_fields.html.erb (11899.5ms)
+  Rendered shopping_karts/_form.html.erb (12811.7ms)
+  Rendered shopping_karts/new.html.erb within layouts/application (17106.1ms)
+Completed 500 Internal Server Error in 27976ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `form' for #<#<Class:0x000000000be06388>:0x000000000c7ddd20>
+Did you mean?  fork):
+    1: <div class='nested-fields'>
+    2:   <div class="field">
+    3:     <%= form.label :item %>
+    4:     <%= form.text_field :item %>
+    5:   </div>
+    6:   <%= link_to_remove_association "remove food", form %>
+  
+app/views/shopping_karts/_food_fields.html.erb:3:in `_app_views_shopping_karts__food_fields_html_erb__672169792_104368360'
+app/views/shopping_karts/_form.html.erb:31:in `block in _app_views_shopping_karts__form_html_erb__854157278_104528360'
+app/views/shopping_karts/_form.html.erb:1:in `_app_views_shopping_karts__form_html_erb__854157278_104528360'
+app/views/shopping_karts/new.html.erb:3:in `_app_views_shopping_karts_new_html_erb__228667206_104789200'
+Started GET "/shopping_karts/new" for ::1 at 2019-03-28 22:48:11 -0500
+Processing by ShoppingKartsController#new as HTML
+  Rendering shopping_karts/new.html.erb within layouts/application
+  Rendered shopping_karts/_food_fields.html.erb (1419.1ms)
+  Rendered shopping_karts/_form.html.erb (2136.7ms)
+  Rendered shopping_karts/new.html.erb within layouts/application (2855.8ms)
+Completed 500 Internal Server Error in 12564ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `form' for #<#<Class:0x000000000be06388>:0x000000000c709ca0>
+Did you mean?  fork):
+    1: <div class='nested-fields'>
+    2:   <div class="field">
+    3:     <%= form.label :item %>
+    4:     <%= form.text_field :item %>
+    5:   </div>
+    6:   <%= link_to_remove_association "remove food", form %>
+  
+app/views/shopping_karts/_food_fields.html.erb:3:in `_app_views_shopping_karts__food_fields_html_erb__672169792_104058200'
+app/views/shopping_karts/_form.html.erb:31:in `block in _app_views_shopping_karts__form_html_erb__854157278_104124480'
+app/views/shopping_karts/_form.html.erb:1:in `_app_views_shopping_karts__form_html_erb__854157278_104124480'
+app/views/shopping_karts/new.html.erb:3:in `_app_views_shopping_karts_new_html_erb__228667206_104354620'
+Started GET "/shopping_karts/new" for ::1 at 2019-03-28 22:48:50 -0500
+Processing by ShoppingKartsController#new as HTML
+  Rendering shopping_karts/new.html.erb within layouts/application
+  Rendered shopping_karts/_food_fields.html.erb (11840.1ms)
+  Rendered shopping_karts/_form.html.erb (12812.1ms)
+  Rendered shopping_karts/new.html.erb within layouts/application (16830.0ms)
+Completed 500 Internal Server Error in 27087ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `form' for #<#<Class:0x000000000be06388>:0x000000000c703440>
+Did you mean?  fork):
+    1: <div class='nested-fields'>
+    2:   <div class="field">
+    3:     <%= form.label :item %>
+    4:     <%= form.text_field :item %>
+    5:   </div>
+    6:   <%= link_to_remove_association "remove food", form %>
+  
+app/views/shopping_karts/_food_fields.html.erb:3:in `_app_views_shopping_karts__food_fields_html_erb__672169792_103760420'
+app/views/shopping_karts/_form.html.erb:31:in `block in _app_views_shopping_karts__form_html_erb__854157278_104041560'
+app/views/shopping_karts/_form.html.erb:1:in `_app_views_shopping_karts__form_html_erb__854157278_104041560'
+app/views/shopping_karts/new.html.erb:3:in `_app_views_shopping_karts_new_html_erb__228667206_104341260'
+Started GET "/shopping_karts/new" for ::1 at 2019-03-28 22:51:44 -0500
+Processing by ShoppingKartsController#new as HTML
+  Rendering shopping_karts/new.html.erb within layouts/application
+  Rendered shopping_karts/_food_fields.html.erb (776.6ms)
+  Rendered shopping_karts/_form.html.erb (1545.4ms)
+  Rendered shopping_karts/new.html.erb within layouts/application (2263.7ms)
+Completed 500 Internal Server Error in 6167ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `item' for #<ShoppingKart:0x000000000c5f1840>):
+    2: <div class='nested-fields'>
+    3:   <div class="field">
+    4:     <%= form.label :item %>
+    5:     <%= form.text_field :item %>
+    6:   </div>
+    7:   <%= link_to_remove_association "remove food", form %>
+    8: </div>
+  
+app/views/shopping_karts/_food_fields.html.erb:5:in `block in _app_views_shopping_karts__food_fields_html_erb__672169792_103447460'
+app/views/shopping_karts/_food_fields.html.erb:1:in `_app_views_shopping_karts__food_fields_html_erb__672169792_103447460'
+app/views/shopping_karts/_form.html.erb:25:in `block in _app_views_shopping_karts__form_html_erb__854157278_103732060'
+app/views/shopping_karts/_form.html.erb:1:in `_app_views_shopping_karts__form_html_erb__854157278_103732060'
+app/views/shopping_karts/new.html.erb:3:in `_app_views_shopping_karts_new_html_erb__228667206_103776500'
+Started GET "/shopping_karts/new" for ::1 at 2019-03-28 22:52:40 -0500
+Processing by ShoppingKartsController#new as HTML
+  Rendering shopping_karts/new.html.erb within layouts/application
+  Rendered shopping_karts/_food_fields.html.erb (734.4ms)
+  Rendered shopping_karts/_form.html.erb (1485.3ms)
+  Rendered shopping_karts/new.html.erb within layouts/application (2183.2ms)
+Completed 500 Internal Server Error in 11831ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `to_key' for #<ActiveRecord::Associations::CollectionProxy []>
+Did you mean?  to_ary
+               to_set):
+    1: <%= form_for @shopping_kart.foods do |form| %>
+    2: <div class='nested-fields'>
+    3:   <div class="field">
+    4:     <%= form.label :item %>
+  
+app/views/shopping_karts/_food_fields.html.erb:1:in `_app_views_shopping_karts__food_fields_html_erb__672169792_98573860'
+app/views/shopping_karts/_form.html.erb:25:in `block in _app_views_shopping_karts__form_html_erb__854157278_98803320'
+app/views/shopping_karts/_form.html.erb:1:in `_app_views_shopping_karts__form_html_erb__854157278_98803320'
+app/views/shopping_karts/new.html.erb:3:in `_app_views_shopping_karts_new_html_erb__228667206_99080780'
+Started GET "/shopping_karts/new" for ::1 at 2019-03-28 22:57:47 -0500
+Processing by ShoppingKartsController#new as HTML
+  Rendering shopping_karts/new.html.erb within layouts/application
+  Rendered shopping_karts/_food_fields.html.erb (1417.1ms)
+  Rendered shopping_karts/_form.html.erb (2114.2ms)
+  Rendered shopping_karts/new.html.erb within layouts/application (2989.1ms)
+Completed 500 Internal Server Error in 7110ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `form' for #<#<Class:0x000000000be06388>:0x000000000900b9b0>
+Did you mean?  fork):
+    1: <div class='nested-fields'>
+    2:   <div class="field">
+    3:     <%= form.label :item %>
+    4:     <%= form.text_field :item %>
+    5:   </div>
+    6:   <%= link_to_remove_association "remove food", form %>
+  
+app/views/shopping_karts/_food_fields.html.erb:3:in `_app_views_shopping_karts__food_fields_html_erb__672169792_53764140'
+app/views/shopping_karts/_form.html.erb:25:in `block in _app_views_shopping_karts__form_html_erb__854157278_53821800'
+app/views/shopping_karts/_form.html.erb:1:in `_app_views_shopping_karts__form_html_erb__854157278_53821800'
+app/views/shopping_karts/new.html.erb:3:in `_app_views_shopping_karts_new_html_erb__228667206_75530740'
